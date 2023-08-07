@@ -67,7 +67,7 @@ public sealed class BackgroundTaskChannel
     /// <returns></returns>
     public Task StopAsync()
     {
-        _channel.Writer.Complete();
+        _channel.Writer.TryComplete();
         _stopTokenSource.Cancel();
         return Task.WhenAll(_readers.Select(r => r.StopAsync()));
     }

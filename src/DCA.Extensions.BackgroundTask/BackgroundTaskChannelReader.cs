@@ -32,7 +32,6 @@ internal sealed class BackgroundTaskChannelReader(
             {
                 if (channelReader.TryRead(out var workItem))
                 {
-
                     var tagList = new TagList
                     {
                         { "channel", key }

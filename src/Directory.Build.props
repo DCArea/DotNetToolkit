@@ -34,4 +34,12 @@
     </AssemblyAttribute>
   </ItemGroup>
 
+
+  <PropertyGroup Condition="'$(IsPackable)'=='true' and '$(SourceLinkCreate)'=='true'">
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(IsPackable)'=='true' and '$(SourceLinkCreate)'=='true'">
+    <None Include="$(RepositoryRoot)\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
 </Project>
