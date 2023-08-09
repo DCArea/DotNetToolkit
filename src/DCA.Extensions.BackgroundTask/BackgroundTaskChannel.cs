@@ -98,4 +98,12 @@ public sealed class BackgroundTaskChannel
             ThreadPool.UnsafeQueueUserWorkItem(task, false);
         }
     }
+
+    /// <summary>
+    /// Get checkpoints of readers
+    /// </summary>
+    public IEnumerable<IBackgroundTask> Checkpoints => _readers
+        .Select(r => r.Checkpoint)
+        .Where(t => t != null)
+        .OfType<IBackgroundTask>();
 }

@@ -12,6 +12,7 @@ internal sealed class BackgroundTaskChannelReader(
     CancellationToken stopToken)
 {
     private Task _readLoop = default!;
+    public IBackgroundTask? Checkpoint;
 
     public Task StartAsync()
     {
@@ -30,7 +31,7 @@ internal sealed class BackgroundTaskChannelReader(
         {
             while (true)
             {
-                if (channelReader.TryRead(out var workItem))
+                if (channelReader.TryRead(out var task))
                 {
                     var tagList = new TagList
                     {
@@ -38,15 +39,16 @@ internal sealed class BackgroundTaskChannelReader(
                     };
                     Metrics.CounterInflightBackgroundTasks.Add(-1, tagList);
                     Metrics.CounterProcessedTasks.Add(1);
-                    if (!workItem.Started)
+                    if (!task.Started)
                     {
-                        workItem.Start();
+                        task.Start();
                     }
-                    var vt = workItem.WaitToCompleteAsync();
+                    var vt = task.WaitToCompleteAsync();
                     if (!vt.IsCompletedSuccessfully)
                     {
                         await vt.ConfigureAwait(false);
                     }
+                    Checkpoint = task;
                 }
                 else
                 {

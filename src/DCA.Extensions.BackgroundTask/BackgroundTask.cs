@@ -22,8 +22,11 @@ public sealed class BackgroundTask<TContext>(
     ) : IBackgroundTask, IThreadPoolWorkItem
     where TContext : IBackgroundTaskContext
 {
+    private readonly WorkItemWaiter _waiter = new();
     public bool Started => _started == 1;
     private int _started = 0;
+    public string? Id => id;
+    public TContext Context => context;
 
     void IThreadPoolWorkItem.Execute() => Start();
 
@@ -39,9 +42,6 @@ public sealed class BackgroundTask<TContext>(
             return;
         }
     }
-
-
-    private readonly WorkItemWaiter _waiter = new();
 
     public ValueTask WaitToCompleteAsync()
     {
