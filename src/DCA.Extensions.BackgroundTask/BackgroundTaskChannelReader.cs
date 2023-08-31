@@ -38,14 +38,16 @@ internal sealed class BackgroundTaskChannelReader(
                         { "channel", key }
                     };
                     Metrics.CounterInflightBackgroundTasks.Add(-1, tagList);
-                    Metrics.CounterProcessedTasks.Add(1);
+                    Metrics.CounterProcessedTasks.Add(1, tagList);
                     if (!task.Started)
                     {
+                        Logs.TaskStarting(logger, key);
                         task.Start();
                     }
                     var vt = task.WaitToCompleteAsync();
                     if (!vt.IsCompletedSuccessfully)
                     {
+                        Logs.TaskWaitingToComplete(logger, key);
                         await vt.ConfigureAwait(false);
                     }
                     Checkpoint = task;
@@ -59,6 +61,7 @@ internal sealed class BackgroundTaskChannelReader(
                     }
                     else
                     {
+                        Logs.WaitingNextTask(logger, key);
                         await channelReader.WaitToReadAsync(stopToken).ConfigureAwait(false);
                     }
                 }

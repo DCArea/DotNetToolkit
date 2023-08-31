@@ -10,6 +10,7 @@ internal static class Metrics
 
     public static Counter<int> CounterDispatchedTasks { get; }
         = s_meter.CreateCounter<int>("background_tasks_dispatched");
+
     public static Counter<int> CounterProcessedTasks { get; }
         = s_meter.CreateCounter<int>("background_tasks_processed");
 }

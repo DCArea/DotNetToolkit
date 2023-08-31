@@ -17,7 +17,7 @@ public class BackgroundTaskChannelOptions
     /// <summary>
     /// The key of the channel
     /// </summary>
-    public string Key { get; set; } = default!;
+    public required string Key { get; init; }
 
     /// <summary>
     /// Max number of inflight tasks in the channel, A negetive number means unlimited

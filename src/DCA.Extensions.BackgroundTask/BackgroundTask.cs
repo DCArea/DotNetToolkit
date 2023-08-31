@@ -44,9 +44,7 @@ public sealed class BackgroundTask<TContext>(
     }
 
     public ValueTask WaitToCompleteAsync()
-    {
-        return _waiter.Task;
-    }
+        => _waiter.Task;
 
     internal async ValueTask ExecuteAsync()
     {
