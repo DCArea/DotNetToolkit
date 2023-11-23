@@ -1,3 +1,4 @@
+#if !NET7_0_OR_GREATER
 namespace System.Runtime.CompilerServices
 {
 	public class RequiredMemberAttribute : Attribute { }
@@ -14,3 +15,4 @@ namespace System.Diagnostics.CodeAnalysis
 	{
 	}
 }
+#endif

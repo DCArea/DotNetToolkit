@@ -16,7 +16,7 @@
     <SourceLinkOriginUrl>https://github.com/DCArea/DotNetToolkit</SourceLinkOriginUrl>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(IsPackable)'=='true' and '$(SourceLinkCreate)'=='true'">
+  <PropertyGroup Condition="'$(IsPackable)'=='true'">
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <!-- <DebugType>embedded</DebugType> -->
@@ -24,7 +24,7 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EnablePackageValidation>true</EnablePackageValidation>
   </PropertyGroup>
-  <ItemGroup Condition="'$(IsPackable)'=='true' and '$(SourceLinkCreate)'=='true'">
+  <ItemGroup Condition="'$(IsPackable)'=='true'">
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All"/>
   </ItemGroup>
 

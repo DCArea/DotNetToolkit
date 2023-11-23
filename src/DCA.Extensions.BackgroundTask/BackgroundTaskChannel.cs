@@ -11,7 +11,7 @@ namespace DCA.Extensions.BackgroundTask;
 public sealed class BackgroundTaskChannel
 {
     private readonly Channel<IBackgroundTask> _channel;
-    private readonly List<BackgroundTaskChannelReader> _readers = new();
+    private readonly List<BackgroundTaskChannelReader> _readers = [];
     private readonly CancellationTokenSource _stopTokenSource = new();
     private readonly ILogger<BackgroundTaskChannel> _logger;
     private readonly BackgroundTaskChannelOptions _options;

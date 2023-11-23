@@ -5,10 +5,10 @@ public class BackgroundTaskOptions
     /// <summary>
     /// Configure channels
     /// </summary>
-    public List<BackgroundTaskChannelOptions> Channels { get; set; } = new()
-    {
+    public List<BackgroundTaskChannelOptions> Channels { get; set; } =
+    [
         new (){ Key = Constants.DefaultChannelKey}
-    };
+    ];
 }
 
 

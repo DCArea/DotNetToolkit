@@ -33,7 +33,7 @@ public record MyTask(string Id) : IRequest
 {
     public class MyTaskHandler : IRequestHandler<MyTask>
     {
-        private static readonly ConcurrentBag<string> _processedTaskIds = new();
+        private static readonly ConcurrentBag<string> _processedTaskIds = [];
 
         public static ConcurrentBag<string> ProcessedTaskIds => _processedTaskIds;
 
