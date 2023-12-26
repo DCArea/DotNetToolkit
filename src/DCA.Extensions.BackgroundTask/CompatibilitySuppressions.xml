@@ -3,7 +3,19 @@
 <Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Suppression>
     <DiagnosticId>CP0001</DiagnosticId>
-    <Target>T:System.Runtime.CompilerServices.IsExternalInit</Target>
+    <Target>T:System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute</Target>
+    <Left>lib/net6.0/DCA.Extensions.BackgroundTask.dll</Left>
+    <Right>lib/net7.0/DCA.Extensions.BackgroundTask.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute</Target>
+    <Left>lib/net6.0/DCA.Extensions.BackgroundTask.dll</Left>
+    <Right>lib/net7.0/DCA.Extensions.BackgroundTask.dll</Right>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0001</DiagnosticId>
+    <Target>T:System.Runtime.CompilerServices.RequiredMemberAttribute</Target>
     <Left>lib/net6.0/DCA.Extensions.BackgroundTask.dll</Left>
     <Right>lib/net7.0/DCA.Extensions.BackgroundTask.dll</Right>
   </Suppression>
