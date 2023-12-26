@@ -4,7 +4,7 @@
   <Suppression>
     <DiagnosticId>CP0001</DiagnosticId>
     <Target>T:System.Runtime.CompilerServices.IsExternalInit</Target>
-    <Left>lib/net6.0/DCA.Extensions.BackgroundTask.dll</Left>
-    <Right>lib/net7.0/DCA.Extensions.BackgroundTask.dll</Right>
+    <Left>lib/net6.0/DCA.Extensions.BackgroundTask.MediatR.dll</Left>
+    <Right>lib/net7.0/DCA.Extensions.BackgroundTask.MediatR.dll</Right>
   </Suppression>
 </Suppressions>

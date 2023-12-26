@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <LangVersion>12</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
     <DebugType>portable</DebugType>
     <NoWarn>$(NoWarn),AD0001,CA1816,CS1591,SYSLIB1006</NoWarn>

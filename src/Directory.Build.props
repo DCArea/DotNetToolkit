@@ -42,4 +42,11 @@
     <None Include="$(RepositoryRoot)\LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
+    <PackageReference Include="PolySharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>
