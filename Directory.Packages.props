@@ -1,37 +1,37 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <MExVersion>[6.0.0,%29</MExVersion>
-    <OtelVersion>[1.5.1,%29</OtelVersion>
+    <MExVersion>8.0.0</MExVersion>
+    <OtelVersion>1.9.0</OtelVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="MediatR" Version="[12.2.0,)" />
+    <PackageVersion Include="MediatR" Version="12.3.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(MExVersion)" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MExVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="$(MExVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="$(MExVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="$(MExVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="$(MExVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.Options" Version="$(MExVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="8.0.2" />
     <PackageVersion Include="OpenTelemetry" Version="$(OtelVersion)" />
     <PackageVersion Include="OpenTelemetry.Exporter.InMemory" Version="$(OtelVersion)" />
     <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="$(OtelVersion)" />
     <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="$(OtelVersion)" />
-    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="[7.0.2,)" />
-    <PackageVersion Include="System.Threading.Channels" Version="[7.0.0,)" />
+    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
+    <PackageVersion Include="System.Threading.Channels" Version="8.0.0" />
     <PackageVersion Include="System.Threading.Tasks.Extensions" Version="[4.5.4,)" />
     <PackageVersion Include="System.Threading.ThreadPool" Version="[4.3.0,)" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="FakeItEasy" Version="7.4.0" />
-    <PackageVersion Include="FluentAssertions" Version="6.11.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.3.1" />
+    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
     <PackageVersion Include="RichardSzalay.MockHttp" Version="6.0.0" />
-    <PackageVersion Include="coverlet.collector" Version="6.0.0" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.2" />
     <PackageVersion Include="skwas.MockHttp" Version="3.0.1" />
     <PackageVersion Include="skwas.MockHttp.Json" Version="3.0.1" />
-    <PackageVersion Include="xunit" Version="2.5.0" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.0" />
+    <PackageVersion Include="xunit" Version="2.9.0" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
   </ItemGroup>
 </Project>
