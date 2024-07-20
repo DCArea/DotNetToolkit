@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Collections.Frozen;
 using DCA.Extensions.BackgroundTask;
 using Microsoft.Extensions.Options;
 
@@ -34,8 +34,7 @@ public static class BackgroundTaskServiceCollectionExtensions
             var options = sp.GetRequiredService<IOptions<BackgroundTaskOptions>>().Value;
             return options.Channels
                 .Select(opt => ActivatorUtilities.CreateInstance<BackgroundTaskChannel>(sp, opt))
-                .ToList()
-                .AsReadOnly();
+                .ToFrozenDictionary(x => x.Key, x => x);
         });
         services.AddSingleton<IBackgroundTaskDispatcher, BackgroundTaskDispatcher>();
         services.AddHostedService<BackgroundTaskHostedService>();

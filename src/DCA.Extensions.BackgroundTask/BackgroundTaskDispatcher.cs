@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Collections.Frozen;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 
@@ -31,14 +31,11 @@ public interface IBackgroundTaskDispatcher
 }
 
 public sealed class BackgroundTaskDispatcher(
-    ReadOnlyCollection<BackgroundTaskChannel> channels,
+    FrozenDictionary<string, BackgroundTaskChannel> channels,
     ILogger<BackgroundTaskDispatcher> logger,
     IServiceProvider serviceProvider)
     : IBackgroundTaskDispatcher
 {
-    private readonly ReadOnlyDictionary<string, BackgroundTaskChannel> _channels
-        = new(channels.ToDictionary(x => x.Key, x => x));
-
     public IServiceProvider ServiceProvider { get; } = serviceProvider;
 
     public ValueTask DispatchAsync<TContext>(
@@ -56,6 +53,6 @@ public sealed class BackgroundTaskDispatcher(
         );
 
         channel ??= Constants.DefaultChannelKey;
-        return _channels[channel].DispatchAsync(task, startNow);
+        return channels[channel].DispatchAsync(task, startNow);
     }
 }

@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Collections.Frozen;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,8 +15,8 @@ public class ReaderTests
         services.AddBackgroundTask();
         var provider = services.BuildServiceProvider();
 
-        var channels = provider.GetRequiredService<ReadOnlyCollection<BackgroundTaskChannel>>();
-        var defaultChannel = channels.Single(ch => ch.Key == Constants.DefaultChannelKey);
+        var channels = provider.GetRequiredService<FrozenDictionary<string, BackgroundTaskChannel>>();
+        var defaultChannel = channels[Constants.DefaultChannelKey];
         var host = (BackgroundTaskHostedService)provider.GetRequiredService<IHostedService>();
         await host.StartAsync(default);
 

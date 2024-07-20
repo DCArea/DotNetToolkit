@@ -17,6 +17,7 @@
     <PackageVersion Include="OpenTelemetry.Exporter.InMemory" Version="$(OtelVersion)" />
     <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="$(OtelVersion)" />
     <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="$(OtelVersion)" />
+    <PackageVersion Include="System.Collections.Immutable" Version="$(MExVersion)" />
     <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
     <PackageVersion Include="System.Threading.Channels" Version="8.0.0" />
     <PackageVersion Include="System.Threading.Tasks.Extensions" Version="[4.5.4,)" />
