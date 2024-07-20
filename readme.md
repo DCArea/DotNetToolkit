@@ -13,7 +13,7 @@ dotnet add package DCA.Extensions.BackgroundTask --prerelease
 ```csharp
 // Register background task components
 services.AddBackgroundTask();
-// Register background dependency
+// Register dependency of background tasks
 services.AddScoped<ServiceA>();
 
 // dispatch a task to run in background
@@ -21,7 +21,7 @@ var dispatcher = serviceProvider.GetRequiredService<IBackgroundTaskDispatcher>()
 await dispatcher.DispatchAsync<ServiceA>(async dep =>
 {
 	await dep.DoWork();
-});
+});  
 
 ```
 

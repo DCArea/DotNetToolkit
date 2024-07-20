@@ -41,13 +41,13 @@ internal sealed class BackgroundTaskChannelReader(
                     Metrics.CounterProcessedTasks.Add(1, tagList);
                     if (!task.Started)
                     {
-                        Logs.TaskStarting(logger, key);
+                        Logs.TaskStarting(logger, key, task.Id);
                         task.Start();
                     }
                     var vt = task.WaitToCompleteAsync();
                     if (!vt.IsCompletedSuccessfully)
                     {
-                        Logs.TaskWaitingToComplete(logger, key);
+                        Logs.TaskWaitingToComplete(logger, key, task.Id);
                         await vt.ConfigureAwait(false);
                     }
                     Checkpoint = task;

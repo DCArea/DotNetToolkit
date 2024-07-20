@@ -8,6 +8,7 @@ public interface IBackgroundTaskContext;
 
 public interface IBackgroundTask : IThreadPoolWorkItem
 {
+    string? Id { get; }
     bool Started { get; }
     void Start();
     ValueTask WaitToCompleteAsync();
@@ -60,10 +61,14 @@ public sealed class BackgroundTask<TContext>(
         {
             activity?.SetTag("task.id", id);
         }
+
+
+        Logs.BackgroundTaskExecuting(logger, id);
         try
         {
             await taskDelegate(context).ConfigureAwait(false);
             activity?.SetStatus(ActivityStatusCode.Ok);
+            Logs.BackgroundTaskExecuted(logger, id);
         }
         catch (Exception ex)
         {

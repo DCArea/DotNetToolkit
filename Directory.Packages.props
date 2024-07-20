@@ -16,7 +16,11 @@
     <PackageVersion Include="OpenTelemetry" Version="$(OtelVersion)" />
     <PackageVersion Include="OpenTelemetry.Exporter.InMemory" Version="$(OtelVersion)" />
     <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="$(OtelVersion)" />
-    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="$(OtelVersion)" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.9.0-beta.2" />
+    <PackageVersion Include="OpenTelemetry.Exporter.Zipkin" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
     <PackageVersion Include="System.Collections.Immutable" Version="$(MExVersion)" />
     <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
     <PackageVersion Include="System.Threading.Channels" Version="8.0.0" />

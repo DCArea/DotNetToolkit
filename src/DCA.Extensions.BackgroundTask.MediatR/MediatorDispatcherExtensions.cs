@@ -12,12 +12,14 @@ public static class MediatorDispatcherExtensions
     /// <typeparam name="TTask">Task payload type</typeparam>
     /// <param name="dispatcher"></param>
     /// <param name="task">Task payload</param>
+    /// <param name="id">Task id</param>
     /// <param name="channel">Channel name</param>
     /// <param name="startNow">Should this tast start now</param>
     /// <returns></returns>
     public static ValueTask DispatchAsync<TTask>(
         this IBackgroundTaskDispatcher dispatcher,
         TTask task,
+        string? id = null,
         string? channel = null,
         bool startNow = true) where TTask : IRequest
     {
@@ -25,7 +27,7 @@ public static class MediatorDispatcherExtensions
             dispatcher.ServiceProvider,
             task
         );
-        return dispatcher.DispatchAsync(Execute, context, channel, startNow);
+        return dispatcher.DispatchAsync(Execute, context, id, channel, startNow);
 
         static ValueTask Execute(MediatorTaskContext<TTask> context)
         {

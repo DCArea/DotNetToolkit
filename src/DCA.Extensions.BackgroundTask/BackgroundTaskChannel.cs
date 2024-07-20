@@ -91,7 +91,7 @@ public sealed class BackgroundTaskChannel
         };
         Metrics.CounterInflightBackgroundTasks.Add(1, tagList);
         Metrics.CounterDispatchedTasks.Add(1);
-        Logs.BackgroundTaskDispatched(_logger, Key);
+        Logs.BackgroundTaskDispatched(_logger, Key, task.Id);
 
         if (startNow)
         {

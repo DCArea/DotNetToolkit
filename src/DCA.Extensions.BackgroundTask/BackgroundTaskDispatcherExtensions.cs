@@ -15,12 +15,14 @@ public static class BackgroundTaskDispatcherExtensions
     /// <typeparam name="TDependency">Dependency type</typeparam>
     /// <param name="dispatcher"></param>
     /// <param name="taskDelegate">Task delegate</param>
+    /// <param name="id">Task id</param>
     /// <param name="channel">Channel name</param>
     /// <param name="startNow">Should this tast start now</param>
     /// <returns></returns>
     public static ValueTask DispatchAsync<TDependency>(
         this IBackgroundTaskDispatcher dispatcher,
         Func<TDependency, ValueTask> taskDelegate,
+        string? id = null,
         string? channel = null,
         bool startNow = true) where TDependency : notnull
     {
@@ -28,7 +30,7 @@ public static class BackgroundTaskDispatcherExtensions
             dispatcher.ServiceProvider,
             taskDelegate
         );
-        return dispatcher.DispatchAsync(Execute, context, channel, startNow);
+        return dispatcher.DispatchAsync(Execute, context, id, channel, startNow);
 
         static ValueTask Execute(DelegateBackgroundTaskContext<TDependency> context)
         {
