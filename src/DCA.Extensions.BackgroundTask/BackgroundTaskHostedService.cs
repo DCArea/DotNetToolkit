@@ -25,7 +25,8 @@ public class BackgroundTaskHostedService(
     public async Task StopAsync(CancellationToken cancellationToken)
     {
         _logger.LogInformation("Stopping background channels...");
-        await Task.WhenAny(channels.Values.Select(x => x.StopAsync()));
+        await Task.WhenAll(channels.Values.Select(x => x.StopAsync()));
+        // await Task.WhenAny(channels.Values.Select(x => x.StopAsync()));
         _logger.LogInformation("Stopped background channels...");
     }
 }

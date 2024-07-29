@@ -37,6 +37,41 @@ public class ReaderTests
         checkpoint.Context.Id.Should().Be(19);
     }
 
+    [Fact]
+    public async Task ShouldFinishingInflightTasksBeforeStop()
+    {
+        const int channelCnt = 10;
+        var services = new ServiceCollection();
+        services.AddLogging();
+        services.AddBackgroundTask(opt=>{
+            opt.Channels.Clear();
+            for(var i = 0;i<channelCnt;i++)
+            {
+                opt.Channels.Add(new BackgroundTaskChannelOptions{Key = i.ToString(), Capacity = -1});
+            }
+        });
+        var provider = services.BuildServiceProvider();
+
+        var host = (BackgroundTaskHostedService)provider.GetRequiredService<IHostedService>();
+        await host.StartAsync(default);
+
+        const int taskCnt = 1000;
+        var processedCnt = 0;
+        var dispatcher = provider.GetRequiredService<IBackgroundTaskDispatcher>();
+        for (int ch=0;ch<channelCnt;ch++)
+        {
+            for (int i = 0; i < taskCnt; i++)
+            {
+                await dispatcher.DispatchAsync(async ctx => {
+                    await Task.Delay(300*ch);
+                    Interlocked.Increment(ref processedCnt);
+                }, new MyTaskContext(i), channel: ch.ToString());
+            }
+        }
+
+        await host.StopAsync(default);
+        processedCnt.Should().Be(channelCnt*taskCnt);
+    }
 }
 
 public record MyTaskContext(int Id) : IBackgroundTaskContext;

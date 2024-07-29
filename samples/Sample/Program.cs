@@ -15,7 +15,10 @@ builder.Services
         .AddPrometheusExporter());
 
 
-builder.Services.AddBackgroundTask();
+builder.Services.AddBackgroundTask(opt =>
+{
+    opt.Channels.First().Capacity = 100;
+});
 builder.Services.AddScoped<ServiceA>();
 
 var app = builder.Build();
@@ -36,6 +39,6 @@ public class ServiceA
 {
     public async Task DoWork()
     {
-        await Task.Delay(10 * 1000);
+        await Task.Delay(60 * 1000);
     }
 }
