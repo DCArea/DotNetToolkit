@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" />
     <PackageReference Include="OpenTelemetry.Exporter.Console" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
+    <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 
   <PropertyGroup>
